@@ -9,19 +9,19 @@
     import org.xml.sax.XMLReader;
     import org.xml.sax.helpers.DefaultHandler;
 
-    public class FragmentContentHandler extends DefaultHandler {
+    public class XpathGenerator extends DefaultHandler {
 
         private String xPath = "/";
         private XMLReader xmlReader;
-        private FragmentContentHandler parent;
+        private XpathGenerator parent;
         private StringBuilder characters = new StringBuilder();
         private Map<String, Integer> elementNameCount = new HashMap<String, Integer>();
 
-        public FragmentContentHandler(XMLReader xmlReader) {
+        public XpathGenerator(XMLReader xmlReader) {
             this.xmlReader = xmlReader;
         }
 
-        private FragmentContentHandler(String xPath, XMLReader xmlReader, FragmentContentHandler parent) {
+        private XpathGenerator(String xPath, XMLReader xmlReader, XpathGenerator parent) {
             this(xmlReader);
             this.xPath = xPath;
             this.parent = parent;
@@ -43,7 +43,7 @@
                 System.out.println(childXPath + "[@" + atts.getQName(x) + "='" + atts.getValue(x) + ']');
             }
 
-            FragmentContentHandler child = new FragmentContentHandler(childXPath, xmlReader, this);
+            XpathGenerator child = new XpathGenerator(childXPath, xmlReader, this);
             xmlReader.setContentHandler(child);
         }
 
