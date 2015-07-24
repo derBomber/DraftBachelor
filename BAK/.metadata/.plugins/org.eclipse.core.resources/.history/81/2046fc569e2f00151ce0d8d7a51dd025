@@ -1,0 +1,105 @@
+import java.io.File;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPathExpressionException;
+
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
+
+public class WriteXMLFile {
+
+	
+	
+	public static void main(String argv[]) throws SAXException, IOException, XPathExpressionException {
+		 
+		  try {
+	 
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	 
+			// root elements
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("Patient");
+			doc.appendChild(rootElement);
+			
+			// set attribute to root element
+			Attr attr = doc.createAttribute("xmlns");
+			attr.setValue("http://hl7.org/fhir");
+			rootElement.setAttributeNode(attr);
+			// rootElement.setAttribute("xmlns", "http://hl7.org/fhir");
+	 
+			// staff elements
+			//Element staff = doc.createElement("Staff");
+			//rootElement.appendChild(staff);
+	 
+			// identifier elements
+			Element identifier = doc.createElement("identifier");
+			identifier.appendChild(doc.createTextNode(""));
+			rootElement.appendChild(identifier);
+				
+			// name elements
+			Element name = doc.createElement("name");
+			//name.appendChild(doc.createTextNode("name"));
+			rootElement.appendChild(name);
+			
+			//family value
+			Element familyname = doc.createElement("family value");
+			familyname.appendChild(doc.createTextNode("family"));
+			name.appendChild(familyname);
+			
+	 
+			// telecom elements
+			Element telecom = doc.createElement("telecom");
+			telecom.appendChild(doc.createTextNode("telecom"));
+			rootElement.appendChild(telecom);
+	 
+			// gender elements
+			Element gender = doc.createElement("gender");
+			rootElement.appendChild(gender);
+			// set attribute to gender element
+			gender.setAttribute("value", "[code]");
+			
+			// birthDate elements
+			Element birthDate = doc.createElement("birthDate");
+			rootElement.appendChild(birthDate);		
+			// set attribute to gender element
+			birthDate.setAttribute("value", "[date]");
+
+			// write the content into xml file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("file.xml"));
+	 
+			// Output to console for testing
+			// StreamResult result = new StreamResult(System.out);
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+			
+			transformer.transform(source, result);
+			
+			System.out.println("File saved!");
+	 
+		  } catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		  } catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		  }
+		}
+	
+	/*public void createElement(Element element){
+		element = doc.createElement(string);
+		rootElement.appendChild(string);
+	}*/
+}

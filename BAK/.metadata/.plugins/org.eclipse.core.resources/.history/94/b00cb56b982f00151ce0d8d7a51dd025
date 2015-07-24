@@ -1,0 +1,11 @@
+import java.util.List;
+import java.util.Map;
+
+
+public class MappingReader {
+
+	public static List<Map<String,String>> readMappings() {
+		File f = new File("mappings.json");
+	}
+	
+}

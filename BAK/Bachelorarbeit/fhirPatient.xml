@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Patient xmlns="http://hl7.org/fhir">
+  <identifier value="1.2.40.0.34.99.111.1.2"/>
+<name>
+    <family value="Mustermann"/>
+  <given value="Herbert"/>
+  <given/>
+  </name>
+<telecom value="tel:+43.2682.40400"/>
+<gender value="M"/>
+<birthDate value="19611224"/>
+<deceased/>
+<address/>
+<maritalStatus/>
+<multipleBirth/>
+<photo/>
+<contact>
+    <relationship/>
+  <name/>
+  <telecom/>
+  <address/>
+  <gender/>
+  <organization/>
+  <period/>
+  </contact>
+<animal>
+    <species/>
+  <breed/>
+  <genderStatus/>
+  </animal>
+<communication>
+    <language/>
+  <preferred/>
+  </communication>
+<careProvider/>
+<managingOrganization/>
+<link>
+    <other/>
+  <type/>
+  </link>
+<active/>
+</Patient>

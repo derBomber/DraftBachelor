@@ -1,0 +1,28 @@
+	[
+		
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/id[1]/@root",
+			"fhir":"/Patient/identifier[1]"	
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/family[1]",
+			"fhir":"/Patient/name[1]/family[1]"	
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/given[1]", 
+			"fhir":"/Patient/name[1]/given[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/telecom[1]/@value", 
+			"fhir":"/Patient/telecom[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/administrativeGenderCode[1]/@code", 
+			"fhir":"/Patient/gender[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/birthTime[1]/@value", 
+			"fhir":"/Patient/birthDate[1]"
+		}
+
+	]
