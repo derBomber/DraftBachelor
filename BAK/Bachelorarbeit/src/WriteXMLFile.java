@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,6 +13,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.dom4j.DocumentHelper;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,6 +32,8 @@ public class WriteXMLFile {
 	 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			
+
 	 
 			// root elements
 			Document doc = docBuilder.newDocument();
@@ -39,6 +45,12 @@ public class WriteXMLFile {
 			attr.setValue("http://hl7.org/fhir");
 			rootElement.setAttributeNode(attr);
 			//rootElement.setAttribute("xmlns", "http://hl7.org/fhir");
+			
+			Element subnode = doc.createElement("id");
+			subnode.appendChild(doc.createTextNode(""));
+			rootElement.appendChild(subnode);
+			subnode.setAttribute("value", "spark17");
+	        
 			
 			// write the content into xml file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -54,25 +66,53 @@ public class WriteXMLFile {
 			transformer.transform(source, result);
 			
 			System.out.println("File saved!");
-			 		
+					 		
+			/*NodeCreator.createElement("identifier");
 			NodeCreator.createElement("identifier");
 			NodeCreator.createElement("name");
+			NodeCreator.createSubElement("prefix", "name");
+			NodeCreator.createSubElement("prefix", "name");
 			NodeCreator.createSubElement("family", "name");
 			NodeCreator.createSubElement("given", "name");
 			NodeCreator.createSubElement("given", "name");
+			NodeCreator.createSubElement("suffix", "name");
+			NodeCreator.createSubElement("suffix", "name");
 			NodeCreator.createElement("telecom");
 			NodeCreator.createElement("gender");
 			NodeCreator.createElement("birthDate");
-			NodeCreator.createElement("deceased");
+			NodeCreator.createElement("deceasedBoolean");
 			NodeCreator.createElement("address");
+			NodeCreator.createSubElement("line", "address");
+			NodeCreator.createSubElement("city", "address");
+			NodeCreator.createSubElement("state", "address");
+			NodeCreator.createSubElement("postalCode", "address");
+			NodeCreator.createSubElement("country", "address");
 			NodeCreator.createElement("maritalStatus");
-			NodeCreator.createElement("multipleBirth");
+			NodeCreator.createSubElement("coding", "maritalStatus");
+			NodeCreator.createSubElement("system", "coding");
+			NodeCreator.createSubElement("code", "coding");
+			NodeCreator.createSubElement("display", "coding");
+			NodeCreator.createSubElement("text", "maritalStatus");
+			NodeCreator.createElement("multipleBirthBoolean");
 			NodeCreator.createElement("photo");
 			NodeCreator.createElement("contact");
 			NodeCreator.createSubElement("relationship", "contact");
-			NodeCreator.createSubElement("name", "contact");
+			NodeCreator.createSubElement("contactname", "contact");
+			*/
+			//final String ROOT = "Patient";
+	        //org.dom4j.Document document = DocumentHelper.createDocument(DocumentHelper.createElement(ROOT));
+	        NodeCreator2.addElementToParent("Patient/test/tes", "test");
+	        
+			/*NodeCreator.createSubElement("family", "contactname");
+			NodeCreator.createSubElement("given", "contactname");
+			NodeCreator.createSubElement("given", "contactname");
 			NodeCreator.createSubElement("telecom", "contact");
-			NodeCreator.createSubElement("address", "contact");
+			NodeCreator.createSubElement("contactAddress", "contact");
+			NodeCreator.createSubElement("line", "contactAddress");
+			NodeCreator.createSubElement("city", "contactAddress");
+			NodeCreator.createSubElement("state", "contactAddress");
+			NodeCreator.createSubElement("postalCode", "contactAddress");
+			NodeCreator.createSubElement("country", "contactAddress");
 			NodeCreator.createSubElement("gender", "contact");
 			NodeCreator.createSubElement("organization", "contact");
 			NodeCreator.createSubElement("period", "contact");
@@ -90,7 +130,8 @@ public class WriteXMLFile {
 			NodeCreator.createSubElement("type", "link");
 			NodeCreator.createElement("active");
 			
-			
+			*/
+	        
 			
 		  } catch (ParserConfigurationException pce) {
 			pce.printStackTrace();

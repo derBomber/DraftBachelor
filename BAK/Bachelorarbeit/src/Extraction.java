@@ -71,6 +71,7 @@ public class Extraction {
 			//fhirNode.item(0).setTextContent(value);
 			
 			((Element) fhirNode.item(0)).setAttribute("value", value);
+			
 		  }
 		
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();

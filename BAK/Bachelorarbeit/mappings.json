@@ -5,6 +5,18 @@
 			"fhir":"/Patient/identifier[1]"	
 			},
 		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/id[2]/@root",
+			"fhir":"/Patient/identifier[2]"	
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/prefix[1]",
+			"fhir":"/Patient/name[1]/prefix[1]"	
+			},		
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/prefix[2]",
+			"fhir":"/Patient/name[1]/prefix[2]"	
+			},	
+		{
 			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/family[1]",
 			"fhir":"/Patient/name[1]/family[1]"	
 			},
@@ -13,16 +25,107 @@
 			"fhir":"/Patient/name[1]/given[1]"
 			},
 		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/given[2]", 
+			"fhir":"/Patient/name[1]/given[2]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/suffix[1]",
+			"fhir":"/Patient/name[1]/suffix[1]"	
+			},	
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/name[1]/suffix[2]",
+			"fhir":"/Patient/name[1]/suffix[2]"	
+			},			
+		{
 			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/telecom[1]/@value", 
 			"fhir":"/Patient/telecom[1]"
 			},
 		{
-			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/administrativeGenderCode[1]/@code", 
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/administrativeGenderCode[1]/@displayName", 
 			"fhir":"/Patient/gender[1]"
 			},
 		{
 			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/birthTime[1]/@value", 
 			"fhir":"/Patient/birthDate[1]"
-		}
-
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/addr[1]/streetAddressLine[1]", 
+			"fhir":"/Patient/address[1]/line[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/addr[1]/city[1]", 
+			"fhir":"/Patient/address[1]/city[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/addr[1]/state[1]", 
+			"fhir":"/Patient/address[1]/state[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/addr[1]/postalCode[1]", 
+			"fhir":"/Patient/address[1]/postalCode[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/addr[1]/country[1]", 
+			"fhir":"/Patient/address[1]/country[1]"
+			},				
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/maritalStatusCode[1]/@code", 
+			"fhir":"/Patient/maritalStatus[1]/coding[1]/system[1]"
+			},	
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/maritalStatusCode[1]/@displayName", 
+			"fhir":"/Patient/maritalStatus[1]/coding[1]/code[1]"
+			},		
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/maritalStatusCode[1]/@codeSystemName", 
+			"fhir":"/Patient/maritalStatus[1]/coding[1]/display[1]"
+			},	
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/guardianPerson[1]/name[1]/given[1]", 
+			"fhir":"/Patient/contact[1]/contactname[1]/given[1]"
+			},	
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/guardianPerson[1]/name[1]/given[2]", 
+			"fhir":"/Patient/contact[1]/contactname[1]/given[2]"
+			},	
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/guardianPerson[1]/name[1]/family[1]", 
+			"fhir":"/Patient/contact[1]/contactname[1]/family[1]"
+			},			
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/telecom[1]/@value", 
+			"fhir":"/Patient/contact[1]/telecom[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/addr[1]/streetAddressLine[1]", 
+			"fhir":"/Patient/contact[1]/contactAddress[1]/line[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/addr[1]/city[1]", 
+			"fhir":"/Patient/contact[1]/contactAddress[1]/city[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/addr[1]/state[1]", 
+			"fhir":"/Patient/contact[1]/contactAddress[1]/state[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/addr[1]/postalCode[1]", 
+			"fhir":"/Patient/contact[1]/contactAddress[1]/postalCode[1]"
+			},
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/patient[1]/guardian[1]/addr[1]/country[1]", 
+			"fhir":"/Patient/contact[1]/contactAddress[1]/country[1]"
+			},		
+		{
+			"cda":"/ClinicalDocument/recordTarget[1]/patientRole[1]/id[2]/@assigningAuthorityName", 
+			"fhir":"/Patient/careProvider[1]"
+			}						
 	]
+
+	
+	
+	
+	
+	
+	
+	
