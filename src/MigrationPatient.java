@@ -253,6 +253,7 @@ public class MigrationPatient {
 
         }
         //xml output properties
+        //all on one line?
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
