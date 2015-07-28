@@ -252,7 +252,7 @@ public class MigrationPatient {
             doc.appendChild(patientElement);
 
         }
-
+        //xml output properties
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
