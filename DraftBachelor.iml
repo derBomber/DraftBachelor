@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="dom4j-2.0.0-RC1" level="project" />
+    <orderEntry type="library" name="json-20141113" level="project" />
   </component>
 </module>
