@@ -203,9 +203,53 @@ public class MigrationPatient {
             address.appendChild(addressPostal);
             patientElement.appendChild(address);
 
+            //contact - relationship
+            Element contact = doc.createElement("contact");
+            Element relationship = doc.createElement("relationship");
+            Element coding = doc.createElement("coding");
+            Element system = doc.createElement("system");
+            system.setAttribute("value", "http://hl7.org/fhir/patient-contact-relationship");
+            Element code = doc.createElement("code");
+            code.setAttribute("value", "partner");
+
+            contact.appendChild(relationship);
+            relationship.appendChild(coding);
+            coding.appendChild(system);
+            coding.appendChild(code);
+            patientElement.appendChild(contact);
+
+            // contact - name, telecom
+            Element guardianName = doc.createElement("name");
+            Element guardianFamily = doc.createElement("family");
+            guardianFamily.setAttribute("value", patient.getGuardianFamilyName());
+            Element guardianGiven = doc.createElement("given");
+            guardianGiven.setAttribute("value", patient.getGuardianGivenName());
+
+            Element guardianTelecom = doc.createElement("telecom");
+            Element guardianTelecomSystem = doc.createElement("system");
+            guardianTelecomSystem.setAttribute("value", "phone");
+            Element guardianTelecomValue = doc.createElement("value");
+            guardianTelecomValue.setAttribute("value", patient.getGuardianTel());
 
 
+            contact.appendChild(guardianName);
+            contact.appendChild(guardianTelecom);
+            guardianName.appendChild(guardianFamily);
+            guardianName.appendChild(guardianGiven);
+            guardianTelecom.appendChild(guardianTelecomSystem);
+            guardianTelecom.appendChild(guardianTelecomValue);
 
+            //managing organization, active
+
+            Element managingOrganization = doc.createElement("managingOrganization");
+            Element reference = doc.createElement("reference");
+            reference.setAttribute("value", "Sample Organization");
+            Element active = doc.createElement("active");
+            active.setAttribute("value", "true");
+
+            patientElement.appendChild(managingOrganization);
+            patientElement.appendChild(active);
+            managingOrganization.appendChild(reference);
 
 
             doc.appendChild(patientElement);
@@ -215,7 +259,7 @@ public class MigrationPatient {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File("file.xml"));
+        StreamResult result = new StreamResult(new File("Patient.xml"));
 
         // Output to console for testing
         // StreamResult result = new StreamResult(System.out);
