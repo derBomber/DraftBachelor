@@ -17,9 +17,14 @@ import java.io.IOException;
  */
 public class PatientMigrationHapi {
     public static void main(String[] args) {
-        FhirContext context = FhirContext.forDstu2();//fhir context
+
+        FhirContext context = FhirContext.forDstu2();
+        //fhir context - most important thing for manipulating FHIR ressource data
+
 
         try {
+
+            //genau das selbe wie beim PatientMigration class, es werden xpath queries erstellt damit man von XML daten kriegt
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(new File("/Users/Anar/IdeaProjects/DraftBachelor/ELGA-e-Medikation_5-Medikationsliste.xml"));
@@ -63,7 +68,7 @@ public class PatientMigrationHapi {
 
 //            doc.getDocumentElement().normalize();
 
-
+//daten werden extrahiert
             for (int i = 0; i < patientNodes.getLength(); ++i) {
                 Node patientNode = patientNodes.item(i);
 
@@ -97,13 +102,13 @@ public class PatientMigrationHapi {
                 String guardianCountry = (String) guardianCountryQuery.evaluate(patientNode, XPathConstants.STRING);
                 String guardianState = (String) guardianStateQuery.evaluate(patientNode, XPathConstants.STRING);
 
-                //patient FHIR ressource
+                //patient FHIR ressource wird erstellt
                 Patient patient = new Patient();
                 patient.addName().addFamily(familyName).addPrefix(prefixName).addGiven(givenName).addSuffix(suffixName);
                 patient.addAddress().setCity(city).setPostalCode(postal).addLine(street).setCountry(country).setState(state);
 
-
-                System.out.println(context.newXmlParser().encodeResourceToString(patient)); //xml
+                //kann sowohl als xml als auch als json encodet werden
+                System.out.println(context.newXmlParser().encodeResourceToString(patient));//xml
                 //System.out.println(context.newJsonParser().encodeResourceToString(patient)); //json
 
                 // medication ressource sample
