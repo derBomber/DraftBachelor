@@ -1,3 +1,5 @@
+package resource;
+
 /**
  * Created by Anar on 7/24/15.
  */
@@ -59,8 +61,6 @@ public class Patient {
 
     private String tel;
     private String email;
-
-
 
     private String street;
     private String postal;

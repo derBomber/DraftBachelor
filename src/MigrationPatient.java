@@ -3,6 +3,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import resource.Patient;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -91,7 +92,7 @@ public class MigrationPatient {
                 String email = (String) emailQuery.evaluate(patientNode, XPathConstants.STRING);
                 String tel = (String) telQuery.evaluate(patientNode, XPathConstants.STRING);
                 String gender = (String) genderQuery.evaluate(patientNode, XPathConstants.STRING);
-                String birthtime = (String) birthtimeQuery.evaluate(patientNode,XPathConstants.STRING);
+                String birthTime = (String) birthtimeQuery.evaluate(patientNode,XPathConstants.STRING);
                 String birthPlace = (String) birthPlaceQuery.evaluate(patientNode, XPathConstants.STRING);
                 String maritalStatus = (String) maritalStatusQuery.evaluate(patientNode, XPathConstants.STRING);
                 String religiousStatus = (String) religiousQuery.evaluate(patientNode, XPathConstants.STRING);
@@ -107,13 +108,12 @@ public class MigrationPatient {
                 Patient patient = new PatientBuilder()
                         .id(id).prefixName(prefixName).prefixName2(prefixName2).givenName(givenName).givenName2(givenName2).familyName(familyName)
                         .familyName2(familyName2).suffixName(suffixName).suffixName2(suffixName2).street(street).city(city).country(country)
-                        .postal(postal).state(state).id(id).socialId(socialId).email(email).tel(tel).gender(gender).birthTime(birthtime)
+                        .postal(postal).state(state).id(id).socialId(socialId).email(email).tel(tel).gender(gender).birthTime(birthTime)
                         .birthPlace(birthPlace).maritalStatus(maritalStatus).religion(religiousStatus).guardianGivenName(guardianGivenName)
                         .guardianFamilyName(guardianFamilyName).guardianTel(guardianTel).guardianStreet(guardianStreet).guardianCity(guardianCity)
                         .guardianCountry(guardianCountry).guardianState(guardianState)
                         .createPatient();
                 patients.add(patient);
-
             }
 
             System.out.println("patient count = " + patients.size());
@@ -123,13 +123,24 @@ public class MigrationPatient {
         }
     }
 
+    private static void printJSON(ArrayList<Patient> patients) {
+
+        for (Patient patient: patients){
+            // Gson gson = new Gson();
+        }
+
+        System.out.println("hi from json");
+
+    }
+
+
     private static void printXml(ArrayList<Patient> patients) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
         Document doc = docBuilder.newDocument();
 
         for (Patient patient : patients) {
-            Element patientElement = doc.createElement("Patient");
+            Element patientElement = doc.createElement("resource.Patient");
 
             // ID
             Element id = doc.createElement("id");
@@ -254,16 +265,16 @@ public class MigrationPatient {
         }
         //xml output properties
         //all on one line?
+
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
+
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File("resource.Patient.xml"));
+
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty(OutputKeys.INDENT, "xml");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File("Patient.xml"));
-
-        // Output to console for testing
-        // StreamResult result = new StreamResult(System.out);
 
         transformer.transform(source, result);
     }

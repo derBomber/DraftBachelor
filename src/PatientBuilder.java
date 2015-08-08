@@ -1,3 +1,5 @@
+import resource.Patient;
+
 public class PatientBuilder {
     private String id;
     private String socialId;
