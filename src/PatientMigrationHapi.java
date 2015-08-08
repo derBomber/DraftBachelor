@@ -11,7 +11,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Anar on 8/8/15.
@@ -29,7 +28,7 @@ public class PatientMigrationHapi {
             XPathExpression query = xpath.compile(resource.Patient.ROOT);
             NodeList patientNodes = (NodeList) query.evaluate(doc, XPathConstants.NODESET);
             System.out.println("count  = " + patientNodes.getLength());
-            ArrayList<Patient> patients = new ArrayList<>();
+           // ArrayList<Patient> patients = new ArrayList<>();
 
 
             XPathExpression prefixNameQuery = xpath.compile(resource.Patient.NAME_PREFIX);
@@ -98,14 +97,14 @@ public class PatientMigrationHapi {
                 String guardianCountry = (String) guardianCountryQuery.evaluate(patientNode, XPathConstants.STRING);
                 String guardianState = (String) guardianStateQuery.evaluate(patientNode, XPathConstants.STRING);
 
-                //patient ressource
+                //patient FHIR ressource
                 Patient patient = new Patient();
                 patient.addName().addFamily(familyName).addPrefix(prefixName).addGiven(givenName).addSuffix(suffixName);
                 patient.addAddress().setCity(city).setPostalCode(postal).addLine(street).setCountry(country).setState(state);
 
 
                 System.out.println(context.newXmlParser().encodeResourceToString(patient)); //xml
-                System.out.println(context.newJsonParser().encodeResourceToString(patient)); //json
+                //System.out.println(context.newJsonParser().encodeResourceToString(patient)); //json
 
                 // medication ressource sample
                 // Medication medication = new Medication();
