@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by Anar on 7/23/15.
  */
-public class MigrationMedication {
+public class MedicationMigration {
     public static void main(String[] args) {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

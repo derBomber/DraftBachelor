@@ -117,7 +117,7 @@
 	-->
 	<!--
 		========================================================================
-		Patient (siehe Allgemeiner Leitfaden, Kapitel 6.3.1)
+		resource.Patient (siehe Allgemeiner Leitfaden, Kapitel 6.3.1)
 		========================================================================
 	-->
 	<recordTarget>

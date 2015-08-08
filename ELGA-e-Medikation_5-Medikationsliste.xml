@@ -85,7 +85,7 @@
 	<!--
 		Dokumentenklasse (siehe Allgemeiner Leitfaden, Kapitel 6.2.7)
 	-->
-	<code code="56445-0" displayName="Medication summary Document" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+	<code code="56445-0" displayName="resource.Medication summary Document" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 	<!--
 		Titel des Dokuments (siehe Allgemeiner Leitfaden, Kapitel 6.2.8)
 	-->
@@ -117,7 +117,7 @@
 	-->
 	<!--
 		========================================================================
-		Patient (siehe Allgemeiner Leitfaden, Kapitel 6.3.1)
+		resource.Patient (siehe Allgemeiner Leitfaden, Kapitel 6.3.1)
 		========================================================================
 	-->
 	<recordTarget>
