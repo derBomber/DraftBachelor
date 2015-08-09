@@ -116,7 +116,7 @@ public class PatientMigrationHapi {
                 patient.addAddress().setCity(city).setPostalCode(postal).addLine(street).setCountry(country).setState(state);
 
                 //kann sowohl als xml als auch als json encodet werden
-                System.out.println(context.newXmlParser().encodeResourceToString(patient));//xml
+                //System.out.println(context.newXmlParser().encodeResourceToString(patient));//xml
                 //System.out.println(context.newJsonParser().encodeResourceToString(patient)); //json
 
                 // medication ressource sample
